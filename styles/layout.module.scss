@@ -1,0 +1,30 @@
+@import 'base.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: $header-height;
+  background-color: $color-background;
+}
+
+.main {
+  position: fixed;
+  top: $header-height;
+  width: 100%;
+  height: calc(100% - #{$header-height});
+  background-color: green;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $footer-height;
+  z-index: 1;
+  background-color: $color-background;
+}
