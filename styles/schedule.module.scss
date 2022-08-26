@@ -1,0 +1,35 @@
+@import 'base.scss';
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  &_container {
+    position: absolute;
+    top: 150px;
+    z-index: 100;
+  }
+
+  &_title {
+    font-size: 14px;
+    margin: 20px 0;
+  }
+}
+
+.schedule {
+  &_container {
+    width: 100px;
+  }
+
+  &_image {
+    //width: 100%;
+    //height: auto;
+    //background: darkgray;
+  }
+
+  &_font {
+    font-size: 10px;
+  }
+
+}

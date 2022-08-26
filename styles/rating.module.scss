@@ -1,0 +1,15 @@
+@import "base";
+
+.rating {
+  margin-bottom: 5px;
+  font-size: xx-small;
+  &_color_active {
+    color: $color-primary
+  }
+
+  &_color_inactive {
+    color: $color-secondary
+  }
+}
+
+

@@ -12,11 +12,13 @@ const Layout = ({ children, metadata, header }) => {
         <meta name="description" content="TV schedules and show" />
         <link rel="icon" type="image/png" href="/icon.png" />
       </Metadata>
-      <div className={styles.header}>
+      <div className={styles.layout_header}>
         <Header>{header}</Header>
       </div>
-      <main className={styles.main}>{children}</main>
-      <div className={styles.footer}></div>
+      <div className={styles.layout_main}>
+        <main className={styles.main_container}>{children}</main>
+      </div>
+      <div className={styles.layout_footer}></div>
     </>
   );
 };
