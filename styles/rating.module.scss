@@ -1,14 +1,23 @@
 @import "base";
 
 .rating {
-  margin-bottom: 5px;
-  font-size: xx-small;
-  &_color_active {
+  &__star {
+    margin-bottom: 5px;
+    font-size: xx-small;
+  }
+
+  &__color_active {
     color: $color-primary
   }
 
-  &_color_inactive {
+  &__color_inactive {
     color: $color-secondary
+  }
+
+  &__text {
+    margin-left: 5px;
+    font-size: 10px;
+    color: $color-primary
   }
 }
 

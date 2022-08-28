@@ -1,55 +1,50 @@
 @import 'base.scss';
 
 .layout {
-  &_header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    width: 100%;
-    height: $header-height;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__header {
+    position: relative;
     background-color: $color-background;
   }
 
-  &_main {
-    position: fixed;
-    width: 180%;
-    height: calc(100% - #{$header-height});
-    top: 120px;
-    z-index: 100;
+  &__main {
+    position: relative;
+    flex: 1;
   }
 
-  &_footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  &__footer {
     height: $footer-height;
-    z-index: 1;
     background-color: $color-background;
   }
 }
 
 .header {
-  &_container {
-    padding: 30px 50px 50px;
+  &__container {
+    padding: 30px 0;
   }
 
-  &_heading {
+  &__subtitle {
     margin-top: 20px;
     color: $color-light-font;
     font-size: 12px;
     width: 80%;
   }
 
-  &_font {
-    font-size: 16px;
+  &__title {
+    padding-left: 50px;
+    font-size: 20px;
   }
 }
 
 .main {
-  &_container {
-    padding: 0 50px;
+  &__container {
+    position: relative;
+    height: 100%;
   }
 }

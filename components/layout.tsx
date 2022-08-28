@@ -4,7 +4,7 @@ import Header from "./header";
 
 const Layout = ({ children, metadata, header }) => {
   return (
-    <>
+    <div className={styles.layout__container}>
       <Metadata metadata={metadata}>
         <meta charSet="UTF-8" />
         <meta httpEquiv="content-language" content="en-gb" />
@@ -12,14 +12,14 @@ const Layout = ({ children, metadata, header }) => {
         <meta name="description" content="TV schedules and show" />
         <link rel="icon" type="image/png" href="/icon.png" />
       </Metadata>
-      <div className={styles.layout_header}>
+      <div className={styles.layout__header}>
         <Header>{header}</Header>
       </div>
-      <div className={styles.layout_main}>
-        <main className={styles.main_container}>{children}</main>
+      <div className={styles.layout__main}>
+        <main className={styles.main__container}>{children}</main>
       </div>
-      <div className={styles.layout_footer}></div>
-    </>
+      <div className={styles.layout__footer} />
+    </div>
   );
 };
 

@@ -1,0 +1,77 @@
+@import "base";
+
+.header {
+  &__container {
+    padding-left: 50px;
+    display: flex;
+  }
+
+  &__image {
+    z-index: 1000
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+
+    background-color: #FFFFFF;
+  }
+}
+
+.main__container {
+  margin: 0 50px;
+  display: flex;
+}
+
+.content {
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    display: flex;
+    padding: 15px 0;
+    font-size: 12px;
+    border-bottom: 1px solid;
+    margin-right: 30px;
+
+  }
+
+  &__info {
+    &_container {
+      width: 50%;
+    }
+
+    &_label {
+      flex-shrink: 0;
+      width: 120px;
+    }
+
+    &_value {
+      color: $color-light-font;
+    }
+  }
+
+  &__starring {
+
+    &_container {
+      width: 50%;
+    }
+
+    &_image {
+      border-radius: 50%;
+    }
+
+    &_person {
+      width: 120px;
+    }
+
+    &_character {
+      color: $color-light-font;
+    }
+  }
+}
+
+
