@@ -1,0 +1,24 @@
+@import "base";
+
+.rating {
+  &__star {
+    margin-bottom: 5px;
+    font-size: xx-small;
+  }
+
+  &__color_active {
+    color: $color-primary
+  }
+
+  &__color_inactive {
+    color: $color-secondary
+  }
+
+  &__text {
+    margin-left: 5px;
+    font-size: 10px;
+    color: $color-primary
+  }
+}
+
+
