@@ -1,6 +1,14 @@
+import React from "react";
 import Head from "next/head";
 
-const Metadata = ({ metadata, children }) => {
+interface MetadataProps {
+  children: React.ReactNode;
+  metadata: {
+    title: string;
+  };
+}
+
+const Metadata: React.FC<MetadataProps> = ({ metadata, children }) => {
   return (
     <Head>
       <title key="title">{metadata.title}</title>

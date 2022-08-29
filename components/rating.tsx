@@ -1,7 +1,13 @@
-import styles from "../styles/rating.module.scss";
+import React from "react";
 import classNames from "classnames";
+import styles from "../styles/rating.module.scss";
 
-const Rating = ({ rating = 0, withText = false }) => {
+interface RatingProps {
+  rating: number;
+  withText?: boolean;
+}
+
+const Rating: React.FC<RatingProps> = ({ rating = 0, withText = false }) => {
   return (
     <div>
       {[...Array(5)].map((_, index) => (

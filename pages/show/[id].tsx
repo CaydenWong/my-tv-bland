@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout";
 import Image from "next/image";
 import Rating from "../../components/rating";
 import styles from "../../styles/show.module.scss";
+import { Show, Cast } from "../../interfaces";
 
-const ShowPage = () => {
+const ShowPage: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [show, setShow] = useState(null);
-  const [casts, setCasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState<Show | undefined>(undefined);
+  const [casts, setCasts] = useState<Cast[]>([]);
 
   useEffect(() => {
     if (!id) return;
@@ -23,6 +25,7 @@ const ShowPage = () => {
       if (results.every(({ ok }) => ok)) {
         setShow(await results[0].json());
         setCasts(await results[1].json());
+        setLoading(false);
       }
     })();
   }, [id]);
@@ -43,27 +46,28 @@ const ShowPage = () => {
     },
   ];
 
-  console.log(show, casts);
-
   return (
     <Layout
-      metadata={{ title: "show name" }}
+      metadata={{ title: show?.name }}
+      loading={loading}
       header={
         <>
           <div className={styles.header__container}>
-            {show?.image?.original && (
-              <Image
-                className={styles.header__image}
-                src={show?.image?.original}
-                alt={`${show?.name} image`}
-                width="240px"
-                height="320px"
-              />
-            )}
-            <div>
+            <Image
+              className={styles.header__image}
+              src={show?.image?.original ?? "/noImage.original.png"}
+              alt={`${show?.name} image`}
+              // layout="responsive"
+              width={240}
+              height={360}
+            />
+            <div className={styles.header__descriptions}>
               <Rating rating={show?.rating?.average} withText={true} />
-              <h1>{show?.name}</h1>
+              <div className={styles.header__descriptions_title}>
+                {show?.name}
+              </div>
               <div
+                className={styles.header__descriptions_subtitle}
                 dangerouslySetInnerHTML={{
                   __html: `${show?.summary}`,
                 }}
@@ -84,27 +88,30 @@ const ShowPage = () => {
             </div>
           ))}
         </div>
-        <div className={styles.content__starring_container}>
-          <div className={styles.content__title}>Starring</div>
-          {casts.map((cast) => (
-            <div key={cast.person.id} className={styles.content__item}>
-              {cast?.person?.image?.medium && (
-                <Image
-                  className={styles.content__starring_image}
-                  src={cast?.person?.image?.medium}
-                  width="20px"
-                  height="20px"
-                />
-              )}
-              <div className={styles.content__starring_person}>
-                {cast.person?.name}
+        {casts.length > 0 && (
+          <div className={styles.content__starring_container}>
+            <div className={styles.content__title}>Starring</div>
+            {casts.map((cast) => (
+              <div key={cast.person.id} className={styles.content__item}>
+                <div className={styles.content__starring_image_container}>
+                  <Image
+                    className={styles.content__starring_image}
+                    alt={`${cast.person?.name} img`}
+                    src={cast?.person?.image?.medium ?? "/noImage.medium.png"}
+                    width="20px"
+                    height="20px"
+                  />
+                </div>
+                <div className={styles.content__starring_person}>
+                  {cast.person?.name}
+                </div>
+                <div className={styles.content__starring_character}>
+                  {cast.character?.name}
+                </div>
               </div>
-              <div className={styles.content__starring_character}>
-                {cast.character?.name}
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   );
