@@ -3,6 +3,7 @@ import ScheduleCard from "../components/scheduleCard";
 import styles from "../styles/schedule.module.scss";
 import { useEffect, useState } from "react";
 import { Schedule } from "../interfaces";
+import uniqBy from "lodash/uniqBy";
 
 const SchedulesPage = () => {
   const [schedules, setSchedules] = useState<Schedule[]>([]);
@@ -12,7 +13,9 @@ const SchedulesPage = () => {
     (async () => {
       const results = await fetch(`/api/schedules`);
       if (results.ok) {
-        setSchedules(await results.json());
+        const schedules = await results.json();
+        console.log(schedules);
+        setSchedules(uniqBy(schedules, ({ show }) => show.id));
         setLoading(false);
       }
     })();
