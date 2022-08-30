@@ -1,46 +1,39 @@
 import Layout from "../components/layout";
-import ScheduleCard from "../components/scheduleCard";
-import styles from "../styles/schedule.module.scss";
-import { useEffect, useState } from "react";
+import ScheduleComponent from "../components/schedule";
+import styles from "../styles/page.module.scss";
 import { Schedule } from "../interfaces";
 import uniqBy from "lodash/uniqBy";
 
-const SchedulesPage = () => {
-  const [schedules, setSchedules] = useState<Schedule[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+export async function getServerSideProps({ res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=2"
+  );
+  const results = await fetch(`http://localhost:3000/api/schedules/`);
+  return { props: { data: results.ok ? await results.json() : [] } };
+}
 
-  useEffect(() => {
-    (async () => {
-      const results = await fetch(`/api/schedules`);
-      if (results.ok) {
-        const schedules = await results.json();
-        console.log(schedules);
-        setSchedules(uniqBy(schedules, ({ show }) => show.id));
-        setLoading(false);
-      }
-    })();
-  }, []);
+const SchedulesPage = ({ data }) => {
+  const schedules: Schedule[] = uniqBy(data, ({ show }) => show.id);
 
   return (
     <Layout
       metadata={{ title: "schedule" }}
       header={
-        <p className={styles.header_container}>
+        <p className={styles.schedule__header}>
           TV Show and web series database. <br /> Create personalised schedules.
           Episode guide, cast, crew and character information.
         </p>
       }
-      loading={loading}
+      loading={false}
     >
-      <div className={styles.page__container}>
-        <div className={styles.page__main_overlay} />
-        <div className={styles.page__main}>
-          <div className={styles.page__title}> Last Added Shows </div>
-          <div className={styles.page__schedules}>
-            {schedules.map((schedule) => (
-              <ScheduleCard key={schedule.id} schedule={schedule} />
-            ))}
-          </div>
+      <div className={styles.schedule__main__overlay} />
+      <div className={styles.schedule__main}>
+        <div className={styles.schedule__title}> Last Added Shows </div>
+        <div className={styles.schedule__panel}>
+          {schedules.map((schedule) => (
+            <ScheduleComponent key={schedule.id} schedule={schedule} />
+          ))}
         </div>
       </div>
     </Layout>

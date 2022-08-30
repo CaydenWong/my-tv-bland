@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import styles from "../styles/rating.module.scss";
+import styles from "../styles/component.module.scss";
 
 interface RatingProps {
   rating: number;

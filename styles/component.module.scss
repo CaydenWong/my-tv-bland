@@ -1,0 +1,50 @@
+@import "base";
+
+.schedule {
+
+  &__container {
+    width: 120px;
+  }
+
+  &__image {
+    &__container {
+      //width: 120px;
+      //height: 160px;
+    }
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  &__font {
+    font-size: 10px;
+  }
+}
+
+.rating {
+  &__star {
+    margin-bottom: 5px;
+    font-size: xx-small;
+  }
+
+  &__color_active {
+    color: $color-primary
+  }
+
+  &__color_inactive {
+    color: $color-secondary
+  }
+
+  &__text {
+    margin-left: 5px;
+    font-size: 10px;
+    color: $color-primary
+  }
+}
+
+
+.loader__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

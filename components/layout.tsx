@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "../styles/layout.module.scss";
+import styles from "../styles/page.module.scss";
+import componentStyles from "../styles/component.module.scss";
 import Metadata from "./metadata";
 import Header from "./header";
 import Loader from "../components/loader";
@@ -31,11 +32,9 @@ const Layout: React.FC<LayoutProps> = ({
       <div className={styles.layout__header}>
         <Header>{loading ? <div /> : header}</Header>
       </div>
-      <div className={styles.layout__main}>
-        <main className={styles.main__container}>
-          {loading ? <Loader loading={loading} /> : children}
-        </main>
-      </div>
+      <main className={styles.layout__main}>
+        {loading ? <Loader loading={loading} /> : children}
+      </main>
       <div className={styles.layout__footer} />
     </div>
   );

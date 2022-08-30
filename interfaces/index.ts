@@ -1,9 +1,9 @@
-export interface Schedule {
+export type Schedule = {
   id: number;
   name: string;
   type: string;
   show: Show;
-}
+};
 
 export interface Show {
   id: number;

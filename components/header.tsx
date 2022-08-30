@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/layout.module.scss";
+import styles from "../styles/page.module.scss";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -7,9 +7,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
-    <div className={styles.header__container}>
-      <h1 className={styles.header__title}>TV Bland</h1>
-      <div className={styles.header__subtitle}>{children}</div>
+    <div className={styles.layout__header__inner__container}>
+      <h1 className={styles.layout__header__title}>TV Bland</h1>
+      {children}
+      {/*<div className={styles.layout__header__content}>{children}</div>*/}
     </div>
   );
 };
