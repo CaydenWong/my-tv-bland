@@ -1,0 +1,12 @@
+query getSchedules {
+  schedules {
+    id
+    name
+    show {
+        name
+        network {
+            name
+        }
+    }
+  }
+}

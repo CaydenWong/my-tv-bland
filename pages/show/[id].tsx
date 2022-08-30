@@ -55,21 +55,23 @@ const ShowPage: React.FC = ({
       header={
         <>
           <div className={styles.show__header}>
-            <span className={styles.show__image__container}>
-              <Image
-                className={styles.show__image}
-                src={show?.image?.original ?? "/noImage.original.png"}
-                alt={`${show?.name} image`}
-                layout="fill"
-                // width={240}
-                // height={360}
-              />
-            </span>
-            <div className={styles.show__descriptions}>
+            <div className={styles.show__header__image__outer__container}>
+              <div className={styles.show__header__image__inner__container} />
+
+              <div className={styles.show__header__image__container}>
+                <Image
+                  className={styles.show__header__image}
+                  src={show?.image?.original ?? "/noImage.original.png"}
+                  alt={`${show?.name} image`}
+                  layout="fill"
+                />
+              </div>
+            </div>
+            <div className={styles.show__header__descriptions}>
               <Rating rating={show?.rating?.average} withText={true} />
-              <div className={styles.show__name}>{show?.name}</div>
+              <div className={styles.show__header__title}>{show?.name}</div>
               <div
-                className={styles.show__summary}
+                className={styles.show__header__summary}
                 dangerouslySetInnerHTML={{
                   __html: `${show?.summary}`,
                 }}
@@ -80,35 +82,46 @@ const ShowPage: React.FC = ({
         </>
       }
     >
-      <div className={styles.show__main}>
-        <div className={styles.show__info__container}>
-          <div className={styles.show__heading}>Show Info</div>
-          {showInfo.map(({ text, value }) => (
-            <div key={text} className={styles.show__list__item}>
-              <div className={styles.show__info__label}>{text}</div>
-              <div className={styles.show__info__value}>{value}</div>
-            </div>
-          ))}
+      <div className={styles.show__main__container}>
+        <div className={styles.show__content__container}>
+          <div className={styles.show__content__heading}>Show Info</div>
+          <div className={styles.show__content__container_info}>
+            {showInfo.map(({ text, value }) => (
+              <div key={text} className={styles.show__content__list__item_info}>
+                <div className={styles.show__content__list__item}>
+                  <div className={styles.show__content__details__container}>
+                    <div className={styles.show__content__title}>{text}</div>
+                    <div className={styles.show__content__value}>{value}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         {casts.length > 0 && (
-          <div className={styles.show__starring__container}>
-            <div className={styles.show__heading}>Starring</div>
+          <div className={styles.show__content__container}>
+            <div className={styles.show__content__heading}>Starring</div>
             {casts.map((cast) => (
-              <div key={cast.person.id} className={styles.show__list__item}>
-                <div className={styles.show__starring__image__container}>
+              <div
+                key={cast.person.id}
+                className={styles.show__content__list__item}
+              >
+                <div className={styles.show__content__avatar__container}>
                   <Image
-                    className={styles.show__starring__image}
+                    className={styles.show__content__avatar}
                     alt={`${cast.person?.name} img`}
                     src={cast?.person?.image?.medium ?? "/noImage.medium.png"}
-                    width="20px"
-                    height="20px"
+                    width="25px"
+                    height="25px"
                   />
                 </div>
-                <div className={styles.show__starring__person}>
-                  {cast.person?.name}
-                </div>
-                <div className={styles.show__starring__character}>
-                  {cast.character?.name}
+                <div className={styles.show__content__details__container}>
+                  <div className={styles.show__content__title}>
+                    {cast.person?.name}
+                  </div>
+                  <div className={styles.show__content__value}>
+                    {cast.character?.name}
+                  </div>
                 </div>
               </div>
             ))}

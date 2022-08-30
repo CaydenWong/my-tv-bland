@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const country = "gb";
-  const showResponse = await fetch(
+  const response = await fetch(
     `https://api.tvmaze.com//schedule?country=${country}`
   );
-  const show = await showResponse.json();
+  const schedules = await response.json();
 
-  res.json(show);
+  res.json(schedules);
 };
 
 export default handler;
