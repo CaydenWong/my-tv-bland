@@ -1,7 +1,7 @@
 @import "base";
 
+// Schedule Component Stying
 .schedule {
-
   &__container {
     width: 120px;
   }
@@ -22,8 +22,14 @@
   &__font {
     font-size: 10px;
   }
+
+  &__button {
+    border: 0;
+    background-color: #ffffff;
+  }
 }
 
+// Rating with stars and text Card Stying
 .rating {
   &__star {
     margin: 0;
@@ -31,21 +37,21 @@
   }
 
   &__color_active {
-    color: $color-primary
+    color: $color-primary;
   }
 
   &__color_inactive {
-    color: $color-secondary
+    color: $color-secondary;
   }
 
   &__text {
     margin-left: 5px;
     font-size: 10px;
-    color: $color-primary
+    color: $color-primary;
   }
 }
 
-
+// Loader Component Stying
 .loader__container {
   position: absolute;
   top: 50%;
@@ -53,8 +59,83 @@
   transform: translate(-50%, -50%);
 }
 
+// Country Selector Stying
+.countrySelector {
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__listbox {
+    position: relative;
+  }
+
+  &__label {
+    font-size: 14px;
+    margin-right: 5px;
+    color: $color-dark-font;
+    min-width: 52px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-width: 150px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 14px;
+    border: 1px solid $color-dark-font;
+    background-color: #ffffff;
+    &_name {
+      color: $color-dark-font;
+    }
+    &_icon {
+      float: right;
+      vertical-align: center;
+    }
+  }
+
+  &__options {
+    width: 100%;
+    max-height: 82px;
+    border-radius: 4px;
+    overflow: auto;
+    font-size: 12px;
+
+    &__container {
+      background-color: #ffffff;
+      position: absolute;
+      margin-top: 3px;
+      width: 100%;
+      max-height: 90px;
+      border: 1px solid $color-dark-font;
+      padding: 4px 0;
+      border-radius: 5px;
+      color: $color-dark-font;
+    }
+  }
+
+  &__option {
+    padding: 1px 0 1px 10px;
+    cursor: default;
+
+    &_active {
+      background-color: $color-background;
+      color: $color-light-font;
+    }
+
+    &_selected {
+
+    }
+  }
+}
 
 @media only screen and (max-width: $break-point) {
+  // Schedule Stying at Break Point
   .schedule__rating {
     display: none;
   }

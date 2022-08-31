@@ -13,12 +13,14 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Testing() {
+export default function GqlDemo() {
   const { data } = useQuery(["schedules"], () => getSchedules());
   return (
     <Layout metadata={{ title: "testing" }} header={<div />} loading={false}>
-      <h1>Testing</h1>
-      <div>{JSON.stringify(data)}</div>
+      <h1>Query for schedules</h1>
+      <h2>Results:</h2>
+
+      <p>{JSON.stringify(data)}</p>
     </Layout>
   );
 }

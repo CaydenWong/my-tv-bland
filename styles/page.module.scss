@@ -1,5 +1,6 @@
 @import "base.scss";
 
+// Layout Styling
 .layout {
   &__container {
     display: flex;
@@ -8,14 +9,23 @@
   }
 
   &__header {
-    position: relative;
     background-color: $color-background;
+
+    &__heading {
+      display: flex;
+      justify-content: space-between;
+    }
 
     &__title {
       font-size: 20px;
     }
 
-    &__inner__container {
+    &__country {
+      margin-right: 20px;
+    }
+
+    &__container {
+      position: relative;
       padding: 30px 50px;
     }
   }
@@ -32,6 +42,7 @@
   }
 }
 
+// Schedule Page Styling
 .schedule {
   &__header {
     margin-top: 20px;
@@ -65,6 +76,7 @@
   }
 }
 
+// Show Page Styling
 .show {
   &__header {
     margin-top: 20px;
@@ -149,8 +161,6 @@
       font-size: 12px;
       border-bottom: 1px solid;
       margin-right: 30px;
-
-
     }
 
     &__avatar {
@@ -179,23 +189,31 @@
   }
 }
 
+// Styling at Break Point
 @media only screen and (max-width: $break-point) {
+  // Layout Styling at Break Point
   .layout {
     &__header {
       position: relative;
       background-color: $color-background;
 
+      &__heading {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
       &__title {
         font-size: 20px;
       }
 
-      &__inner__container {
+      &__container {
         padding: 20px 10px;
       }
     }
   }
 
-
+  // Show Schedule Styling at Break Point
   .schedule {
     &__header {
       margin-top: 20px;
@@ -225,7 +243,7 @@
     }
   }
 
-
+  // Show Page Styling at Break Point
   .show {
     &__header {
       display: block;

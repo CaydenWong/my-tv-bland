@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/page.module.scss";
-import componentStyles from "../styles/component.module.scss";
 import Metadata from "./metadata";
 import Header from "./header";
 import Loader from "../components/loader";

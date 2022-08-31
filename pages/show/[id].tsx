@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/layout";
 import Image from "next/image";
 import Rating from "../../components/rating";
+import sanitizeHtml from "sanitize-html";
 import styles from "../../styles/page.module.scss";
 import { Show, Cast } from "../../interfaces";
 
@@ -10,7 +11,7 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   context.res.setHeader(
     "Cache-Control",
-    "public, s-maxage=1, stale-while-revalidate=2"
+    "public, s-maxage=10, stale-while-revalidate=59"
   );
   const results = await Promise.all([
     fetch(`http://localhost:3000/api/show/${id}`),
@@ -72,9 +73,11 @@ const ShowPage: React.FC = ({
               <div className={styles.show__header__title}>{show?.name}</div>
               <div
                 className={styles.show__header__summary}
-                dangerouslySetInnerHTML={{
-                  __html: `${show?.summary}`,
-                }}
+                dangerouslySetInnerHTML={
+                  show?.summary && {
+                    __html: `${sanitizeHtml(show.summary)}`,
+                  }
+                }
               />
             </div>
           </div>

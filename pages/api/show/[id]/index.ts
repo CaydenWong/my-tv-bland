@@ -1,10 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Show } from "../../../../interfaces";
-
-type Props = {
-  item?: Show;
-  errors?: string;
-};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {

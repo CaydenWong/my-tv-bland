@@ -14,13 +14,15 @@ const ScheduleComponent: React.FC<ScheduleCardProps> = ({ schedule }) => {
     <Link href={`/show/${schedule?.show?.id}`}>
       <div className={styles.schedule__container}>
         <div className={styles.schedule__image__container}>
-          <Image
-            className={styles.schedule__image}
-            src={schedule?.show?.image?.medium ?? "/noImage.medium.png"}
-            alt={`${schedule?.show?.name} image`}
-            width="120px"
-            height="160px"
-          />
+          <button className={styles.schedule__button}>
+            <Image
+              className={styles.schedule__image}
+              src={schedule?.show?.image?.medium ?? "/noImage.medium.png"}
+              alt={`${schedule?.show?.name} image`}
+              width="120px"
+              height="160px"
+            />
+          </button>
         </div>
         <Rating
           className={styles.schedule__rating}
